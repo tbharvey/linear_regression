@@ -132,12 +132,17 @@ coef(summary(sat.voting.mod))
 ##   1. Examine/plot the data before fitting the model
 
 state.data <- readRDS("dataSets/states.rds") 
-sts.ex.sat <- subset(states.data, select = c("energy", "metro"))
-summary(sts.ex.sat)
-plot(sts.ex.sat)
+state.subset <- subset(states.data, select = c("energy", "metro"))
+summary(state.subset)
+plot(state.subset)
 
 ##   2. Print and interpret the model `summary'
+states.model <- lm(energy ~ metro, data = state.data)
+summary(states.model)
+
 ##   3. `plot' the model to look for deviations from modeling assumptions
+
+plot(states.model)
 
 ##   Select one or more additional predictors to add to your model and
 ##   repeat steps 1-3. Is this model significantly better than the model
